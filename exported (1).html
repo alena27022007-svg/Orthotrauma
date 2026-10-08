@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OrthoTrauma Academy — Учебный портал</title>
+<style>
+:root{--blue:#155eef;--navy:#123b68;--teal:#0ea5a4;--bg:#f5f8fc;--card:#fff;--line:#e5e7eb;--muted:#667085;--green:#039855;--orange:#f79009;--red:#d92d20}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#172b4d;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}.layout{display:flex;min-height:100vh}.sidebar{position:sticky;top:0;width:280px;height:100vh;overflow:auto;background:var(--navy);color:#fff;padding:26px 18px}.brand{display:flex;gap:12px;align-items:center;margin-bottom:28px}.logo{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,#28c7c5,#155eef);font-size:23px}.brand h1{font-size:17px;line-height:1.15;margin:0}.brand small{display:block;color:#b9c9dc;margin-top:4px}.nav-title{text-transform:uppercase;letter-spacing:.08em;color:#9fb2c9;font-size:11px;margin:18px 10px 8px}.nav a{display:block;color:#dce8f5;text-decoration:none;border-radius:9px;padding:9px 10px;margin:3px 0;font-size:14px}.nav a:hover,.nav a.active{background:#ffffff18;color:#fff}.main{width:min(1200px,100%);margin:0 auto;padding:36px 38px 80px}.hero{background:linear-gradient(125deg,#123b68,#155eef 65%,#0ea5a4);color:#fff;border-radius:24px;padding:38px;box-shadow:0 12px 34px #123b6820}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#c9dcf6;font-weight:700}.hero h2{font-size:clamp(28px,4vw,46px);line-height:1.08;margin:12px 0}.hero p{max-width:780px;color:#e8f1fb;font-size:17px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;font-size:14px}.btn.primary{background:#fff;color:var(--navy)}.btn.secondary{background:#ffffff20;color:#fff;border:1px solid #ffffff55}.btn.blue{background:var(--blue);color:#fff}.btn.teal{background:var(--teal);color:#fff}.notice{margin-top:18px;background:#fff7e8;border-left:4px solid var(--orange);padding:14px 16px;border-radius:10px;color:#6b4c16}.section{margin-top:34px;scroll-margin-top:20px}.section h2{font-size:28px;margin:0 0 14px;color:var(--navy)}.section h3{font-size:19px;margin:22px 0 8px;color:var(--navy)}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 3px 12px #172b4d08}.card h3,.card h4{margin-top:0}.card p{margin-bottom:0}.icon{font-size:25px;margin-bottom:7px}.pill{display:inline-block;background:#eaf2ff;color:var(--blue);border-radius:99px;padding:4px 9px;font-size:12px;font-weight:700;margin:3px 3px 0 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:13px;background:#fff}table{border-collapse:collapse;width:100%;min-width:650px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f1f5fa;color:var(--navy);font-size:13px}tr:last-child td{border-bottom:0}code{background:#eef2f7;border-radius:5px;padding:2px 5px;font-size:.9em}.code{background:#142238;color:#dce8f5;border-radius:14px;padding:18px;overflow:auto;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre}.checklist{list-style:none;padding:0;margin:0}.checklist li{padding:9px 0;border-bottom:1px solid var(--line)}.checklist li:last-child{border-bottom:0}.checklist li:before{content:'✓';display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#dcfae6;color:var(--green);font-weight:800;margin-right:8px}.search{display:flex;gap:8px;margin:16px 0}.search input{flex:1;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:15px}.footer{margin-top:45px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.toast{position:fixed;right:20px;bottom:20px;background:#172b4d;color:#fff;padding:12px 16px;border-radius:10px;display:none;box-shadow:0 10px 25px #0003}.back{position:fixed;right:20px;bottom:72px;border:0;border-radius:50%;width:42px;height:42px;background:var(--blue);color:#fff;cursor:pointer;font-size:18px;display:none}
+.modal-overlay{position:fixed;inset:0;background:#0b1b2bcc;backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:18px;width:min(860px,100%);max-height:90vh;display:flex;flex-direction:column;box-shadow:0 24px 60px #0006;overflow:hidden}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line);background:#f1f5fa}
+.modal-head h3{margin:0;color:var(--navy);font-size:20px}
+.modal-close{border:0;background:#e5e7eb;color:#172b4d;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;font-weight:700}
+.modal-close:hover{background:#d1d5db}
+.modal-body{padding:20px 24px;overflow:auto;line-height:1.6}
+.modal-body h4{color:var(--navy);margin:18px 0 8px;font-size:17px}
+.modal-body h4:first-child{margin-top:0}
+.modal-body ul{margin:6px 0 12px;padding-left:22px}
+.modal-body li{margin:4px 0}
+.modal-body .alert{background:#fff7e8;border-left:4px solid var(--orange);padding:10px 14px;border-radius:8px;margin:12px 0;color:#6b4c16}
+.modal-body .key{background:#eaf2ff;border-left:4px solid var(--blue);padding:10px 14px;border-radius:8px;margin:12px 0}
+.modal-foot{display:flex;gap:10px;justify-content:flex-end;padding:14px 22px;border-top:1px solid var(--line);background:#f9fafb}
+@media(max-width:850px){.layout{display:block}.sidebar{position:relative;width:100%;height:auto;padding:18px}.nav{display:flex;overflow:auto;gap:5px}.nav-title{display:none}.nav a{white-space:nowrap}.main{padding:22px 16px 60px}.hero{padding:25px 20px}.two{grid-template-columns:1fr}}
+@media print{.sidebar,.actions,.search,.back,.modal-overlay{display:none!important}.main{padding:0}.hero{color:#000;background:#fff;box-shadow:none;border:1px solid #ddd}.hero p,.eyebrow{color:#333}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">✚</div><div><h1>OrthoTrauma<br>Academy</h1><small>Учебный портал</small></div></div>
+  <div class="nav-title">Навигация</div>
+  <nav class="nav">
+    <a href="#home">Главная</a><a href="#goals">Цели</a><a href="#structure">Структура</a><a href="#theory">Теория</a><a href="#ai">ИИ-помощник</a><a href="#glossary">Глоссарий</a><a href="#tests">Тесты</a><a href="#presentations">Презентации</a><a href="#tech">Технологии</a><a href="#api">API</a><a href="#acceptance">Приемка</a>
+  </nav>
+</aside>
+<main class="main">
+<section id="home" class="hero">
+  <div class="eyebrow">Образовательная медицинская платформа</div>
+  <h2>Изучайте травматологию и ортопедию системно</h2>
+  <p>Теория, клинические алгоритмы, интерактивные тесты, глоссарий и инструменты для подготовки к экзаменам — в одном учебном портале.</p>
+  <div class="actions"><a class="btn primary" href="#structure">Открыть структуру</a><a class="btn secondary" href="#ai">Перейти к ИИ</a><button class="btn secondary" onclick="window.print()">Печать / PDF</button></div>
+</section>
+<div class="notice"><b>Медицинский дисклеймер:</b> платформа предназначена для обучения. Материалы и ответы ИИ не заменяют консультацию врача, официальные клинические рекомендации и протоколы лечения.</div>
+<section class="section" id="goals"><h2>Цели проекта</h2><div class="grid">
+  <article class="card"><div class="icon">📚</div><h3>Обучение</h3><p>Структурированные курсы по травматологии, ортопедии и реабилитации.</p></article>
+  <article class="card"><div class="icon">🤖</div><h3>Профессиональный ИИ</h3><p>Объяснение тем, формирование конспектов, кейсов, вопросов и презентаций с источниками.</p></article>
+  <article class="card"><div class="icon">✅</div><h3>Контроль знаний</h3><p>Тесты по разделам, проверочные работы, оценки и рекомендации по повторению.</p></article>
+  <article class="card"><div class="icon">📊</div><h3>Прогресс</h3><p>Личный кабинет, статистика, слабые темы, история обучения и достижения.</p></article>
+</div></section>
+<section class="section" id="structure"><h2>Структура сайта</h2><div class="grid">
+  <article class="card"><h3>Основные разделы</h3><p><span class="pill">Главная</span><span class="pill">Теория</span><span class="pill">Клинические разделы</span><span class="pill">ИИ-помощник</span><span class="pill">Википедия</span><span class="pill">Глоссарий</span><span class="pill">Тесты</span><span class="pill">Проверочные работы</span><span class="pill">Презентации</span><span class="pill">Прогресс</span></p></article>
+  <article class="card"><h3>Роли пользователей</h3><p><span class="pill">Студент</span><span class="pill">Ординатор</span><span class="pill">Врач</span><span class="pill">Преподаватель</span><span class="pill">Администратор</span></p></article>
+</div></section>
+<section class="section" id="theory">
+  <h2>Раздел «Теория»</h2>
+  <div class="search">
+    <input id="topicSearch" placeholder="Поиск по темам и описаниям">
+    <button class="btn blue" onclick="filterTopics()">Найти тему</button>
+  </div>
+  <div class="grid" id="topicGrid">
+    <article class="card topic"><span class="pill">База</span><h3>Общая травматология и первая помощь</h3><p><b>Изучите:</b> первичный осмотр, механизм травмы, оценку кровообращения и чувствительности, иммобилизацию, обезболивание, транспортировку и признаки шока.</p><p><b>Алгоритм:</b> безопасность → ABCDE → контроль кровотечения → оценка конечности → иммобилизация → срочная маршрутизация.</p><button class="btn teal" onclick="openTheory('Общая травматология и первая помощь')">Открыть тему</button></article>
+    <article class="card topic"><span class="pill">Повреждения</span><h3>Переломы и осложнения</h3><p><b>Изучите:</b> классификацию переломов, клинические признаки, рентгенологическую диагностику, принципы репозиции и фиксации, повреждения сосудов и нервов, компартмент-синдром и инфекционные осложнения.</p><p><b>Контроль:</b> оценка мягких тканей и нейроваскулярного статуса до и после вмешательства.</p><button class="btn teal" onclick="openTheory('Переломы и осложнения')">Открыть тему</button></article>
+    <article class="card topic"><span class="pill">Суставы</span><h3>Вывихи и повреждения суставов</h3><p><b>Изучите:</b> отличие вывиха от подвывиха, осмотр, визуализацию, обезболивание, закрытое вправление, контроль после вправления, иммобилизацию и показания к операции.</p><p><b>Важно:</b> исключение перелома и сосудисто-нервного повреждения до манипуляции.</p><button class="btn teal" onclick="openTheory('Вывихи и повреждения суставов')">Открыть тему</button></article>
+    <article class="card topic"><span class="pill">Ортопедия</span><h3>Ортопедия и эндопротезирование</h3><p><b>Изучите:</b> дегенеративные заболевания суставов, показания и противопоказания, предоперационную оценку, виды имплантов, реабилитацию, профилактику тромбозов и инфекций.</p><p><b>Результат:</b> обоснованный выбор тактики с учетом функции, боли, возраста и рисков.</p><button class="btn teal" onclick="openTheory('Ортопедия и эндопротезирование')">Открыть тему</button></article>
+    <article class="card topic"><span class="pill">Позвоночник</span><h3>Повреждения позвоночника</h3><p><b>Изучите:</b> механизм травмы, стабилизацию, неврологический осмотр, показания к КТ и МРТ, оценку нестабильности и принципы лечения повреждений спинного мозга.</p><p><b>Алгоритм:</b> ограничение движений → нейроваскулярная оценка → визуализация → консультация специалиста.</p><button class="btn teal" onclick="openTheory('Повреждения позвоночника')">Открыть тему</button></article>
+    <article class="card topic"><span class="pill">Спорт</span><h3>Спортивная травматология</h3><p><b>Изучите:</b> растяжения, повреждения связок и менисков, перегрузочные синдромы, диагностику, этапы возвращения к спорту и профилактику повторных травм.</p><p><b>Практика:</b> функциональные критерии важнее одного только срока после травмы.</p><button class="btn teal" onclick="openTheory('Спортивная травматология')">Открыть тему</button></article>
+    <article class="card topic"><span class="pill">Педиатрия</span><h3>Детская ортопедия</h3><p><b>Изучите:</b> особенности растущего скелета, зоны роста, врожденные деформации, детские переломы, дисплазию тазобедренных суставов и возрастные нормы.</p><p><b>Принцип:</b> тактика зависит от возраста, локализации, роста и потенциала ремоделирования.</p><button class="btn teal" onclick="openTheory('Детская ортопедия')">Открыть тему</button></article>
+  </div>
+
+  <div id="theoryModal" class="modal-overlay" onclick="if(event.target===this)closeTheory()">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="theoryTitle">
+      <div class="modal-head">
+        <h3 id="theoryTitle">Тема</h3>
+        <button class="modal-close" onclick="closeTheory()" aria-label="Закрыть">✕</button>
+      </div>
+      <div id="theoryBody" class="modal-body"></div>
+      <div class="modal-foot">
+        <button class="btn blue" onclick="askAIAboutTopic()">Спросить ИИ по теме</button>
+        <button class="btn secondary" onclick="closeTheory()">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="ai"><h2>ИИ-помощник и источники</h2><div class="card"><div class="search"><input id="aiQuestion" placeholder="Например: объясни отличие вывиха от подвывиха"><button class="btn blue" onclick="askDemo()">Спросить ИИ</button></div><div id="aiAnswer" class="notice" style="display:none"></div><p>Режимы: «Объяснить», «Кратко», «Подробно», «Подготовка к экзамену», «Клинический кейс». Ответ должен отображать дату, использованные источники, ссылки, отметку «сформировано ИИ» и предупреждение о проверке медицинской информации.</p><div class="code">Пользователь → Frontend → Backend API → Сервис источников
+  ├─ ИИ-провайдер
+  ├─ Wikimedia / Wikipedia API
+  ├─ Внутренняя база материалов
+  └─ Поиск по загруженным документам
+→ Ответ с источниками</div></div></section>
+<section class="section" id="glossary"><h2>Глоссарий</h2><div class="grid"><article class="card"><h3>Карточка термина</h3><p>Термин, определение, синонимы, английский эквивалент, категория, связанные термины и источники.</p></article><article class="card"><h3>Функции</h3><p>Поиск, фильтры, закладки, связанные темы, кнопки «Объяснить с помощью ИИ», «Добавить в карточки» и «Пройти мини-тест».</p></article></div></section>
+<section class="section" id="tests"><h2>Тесты и проверочные работы</h2><div class="two"><div class="card"><h3>Типы вопросов</h3><ul><li>Один или несколько правильных ответов.</li><li>Верно / неверно.</li><li>Сопоставление и порядок действий.</li><li>Клинический сценарий.</li><li>Вопрос с изображением.</li><li>Открытый ответ.</li></ul></div><div class="card"><h3>Результат</h3><p>Итоговый балл, процент правильных ответов, время, ошибки, объяснения, рекомендации и кнопка перехода к теории.</p></div></div><div class="card" style="margin-top:16px"><h3>Проверочные работы</h3><p>Контрольная работа, итоговый экзамен, клиническая задача, письменный разбор, практический алгоритм, презентация или устный ответ. Автоматические ответы проверяются системой, клиническое мышление и письменные работы — преподавателем.</p></div></section>
+<section class="section" id="presentations"><h2>Конструктор презентаций</h2><div class="card"><h3>Сценарий создания</h3><div class="grid"><div><b>1.</b> Выбрать тему и аудиторию.</div><div><b>2.</b> Указать количество слайдов.</div><div><b>3.</b> Выбрать шаблон.</div><div><b>4.</b> Сгенерировать структуру ИИ.</div><div><b>5.</b> Отредактировать слайды.</div><div><b>6.</b> Экспортировать PDF/PPTX.</div></div><p style="margin-top:16px">Шаблоны: лекция, клинический разбор, экзамен, конференция, памятка для пациента и сравнительный обзор методов лечения.</p></div></section>
+<section class="section" id="tech"><h2>Технический стек</h2><div class="table-wrap"><table><tr><th>Компонент</th><th>Рекомендация</th><th>Назначение</th></tr><tr><td>Frontend</td><td>Next.js, React, TypeScript, Tailwind CSS</td><td>Адаптивный интерфейс, маршрутизация, страницы обучения</td></tr><tr><td>Backend</td><td>Python, FastAPI, Pydantic</td><td>API, авторизация, интеграция ИИ и источников</td></tr><tr><td>Хранилище</td><td>PostgreSQL, Redis, S3</td><td>Данные, кэш, очереди, файлы и презентации</td></tr><tr><td>Безопасность</td><td>HTTPS, JWT/HTTP-only cookies, RBAC</td><td>Защита аккаунтов и разграничение прав</td></tr><tr><td>Развертывание</td><td>Docker, Nginx, CI/CD</td><td>Стабильная публикация и масштабирование</td></tr></table></div></section>
+<section class="section" id="api"><h2>Основные API</h2><div class="table-wrap"><table><tr><th>Метод</th><th>Endpoint</th><th>Назначение</th></tr><tr><td>POST</td><td><code>/api/auth/login</code></td><td>Авторизация</td></tr><tr><td>GET</td><td><code>/api/courses</code></td><td>Список курсов</td></tr><tr><td>GET</td><td><code>/api/glossary</code></td><td>Поиск терминов</td></tr><tr><td>POST</td><td><code>/api/ai/ask</code></td><td>Запрос к ИИ</td></tr><tr><td>GET</td><td><code>/api/wikipedia/search</code></td><td>Поиск в Википедии</td></tr><tr><td>POST</td><td><code>/api/tests/{id}/submit</code></td><td>Отправка теста</td></tr><tr><td>POST</td><td><code>/api/presentations/generate</code></td><td>Создание презентации</td></tr><tr><td>GET</td><td><code>/api/progress</code></td><td>Прогресс пользователя</td></tr></table></div></section>
+<section class="section" id="acceptance"><h2>Критерии приемки</h2><div class="card"><ul class="checklist"><li>Регистрация и вход работают.</li><li>Все пункты меню ведут на соответствующие разделы.</li><li>Материалы, поиск, тесты и результаты сохраняются.</li><li>ИИ формирует структурированный ответ с источниками.</li><li>Поиск в Википедии выполняется через серверный API.</li><li>Презентация создается, редактируется и сохраняется.</li><li>Преподаватель может создавать тесты.</li><li>Администратор может публиковать материалы.</li><li>Секретные API-ключи отсутствуют во frontend.</li><li>Сайт корректно работает на мобильных устройствах.</li></ul></div></section>
+<footer class="footer">OrthoTrauma Academy · Техническое задание на разработку образовательного сайта · Версия 1.0</footer>
+</main></div><button class="back" id="back" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button><div class="toast" id="toast"></div>
+
+<script>
+const THEORY = {
+  "Общая травматология и первая помощь": {
+    intro: "Раздел посвящен оказанию первой помощи и первичной оценке пострадавшего с травмой. Цель — не пропустить угрожающие жизни состояния и правильно подготовить пациента к транспортировке.",
+    blocks: [
+      {h:"Первичный осмотр (ABCDE)", p:"Оценка по схеме ABCDE: <b>A</b> — проходимость дыхательных путей и стабильность шейного отдела; <b>B</b> — дыхание и экскурсия грудной клетки; <b>C</b> — кровообращение, пульс, давление, контроль кровотечения; <b>D</b> — неврологический статус (сознание, зрачки, движение); <b>E</b> — осмотр всего тела, поиск скрытых повреждений."},
+      {h:"Механизм травмы", p:"Высокоэнергетическая травма (ДТП, падение с высоты) повышает риск множественных и нестабильных повреждений. Низкоэнергетическая — характерна для пожилых (остеопороз). Всегда учитывайте обстоятельства."},
+      {h:"Оценка конечности", p:"Проверяйте <b>5 признаков</b>: боль, деформация, отек, кровоподтек, нарушение функции. Обязательно оценивайте <b>нейроваскулярный статус</b>: пульс, капиллярное наполнение, цвет, температуру, чувствительность и движения дистальнее травмы."},
+      {h:"Иммобилизация и обезболивание", p:"Иммобилизация обязательна до транспортировки. Используйте шины, фиксацию соседних суставов. Обезболивание — по показаниям, с учетом гемодинамики."},
+      {h:"Признаки шока", p:"Бледность, холодный пот, тахикардия, гипотония, спутанность сознания, снижение диуреза. При шоке — остановка кровотечения, инфузия, срочная госпитализация."},
+      {h:"Маршрутизация", p:"Пациенты с подозрением на множественную травму, повреждение сосудов/нервов, компартмент-синдром или шок направляются в травмоцентр соответствующего уровня."}
+    ],
+    alert: "Любое сомнение в нейроваскулярном статусе — показание к срочной консультации и госпитализации."
+  },
+  "Переломы и осложнения": {
+    intro: "Перелом — нарушение целостности кости. Важно не только выявить перелом, но и оценить мягкие ткани, сосуды и нервы, а также предупредить ранние и поздние осложнения.",
+    blocks: [
+      {h:"Классификация", p:"По характеру линии: поперечные, косые, винтообразные, оскольчатые, сегментарные. По стабильности: стабильные и нестабильные. По целостности кожи: закрытые и открытые."},
+      {h:"Клинические признаки", p:"Боль, деформация, патологическая подвижность, крепитация, отек, нарушение функции. <b>Открытый перелом</b> — рана в зоне перелома (экстренная ситуация)."},
+      {h:"Диагностика", p:"Рентгенография в 2 проекциях — базовый метод. КТ — при сложных и внутрисуставных переломах. МРТ — при подозрении на повреждение связок, хряща или спинного мозга."},
+      {h:"Принципы лечения", p:"Репозиция (закрытая/открытая), фиксация (гипс, спицы, пластины, штифты, аппараты внешней фиксации), иммобилизация и реабилитация. Выбор зависит от стабильности, локализации и состояния мягких тканей."},
+      {h:"Ранние осложнения", p:"Повреждение сосудов и нервов, компартмент-синдром, жировая эмболия, тромбоз, инфекция. <b>Компартмент-синдром</b> — боль при пассивном растяжении, напряженность, снижение чувствительности → экстренная фасциотомия."},
+      {h:"Поздние осложнения", p:"Несращение, ложный сустав, неправильное сращение, посттравматический артроз, остеомиелит, контрактуры."}
+    ],
+    key: "Нейроваскулярный контроль до и после вмешательства — обязателен."
+  },
+  "Вывихи и повреждения суставов": {
+    intro: "Вывих — стойкое смещение суставных поверхностей с полной утратой контакта; подвывих — частичная утрата контакта. Требуют срочной диагностики и вправления.",
+    blocks: [
+      {h:"Отличие вывиха от подвывиха", p:"Вывих — полное разобщение суставных поверхностей. Подвывих — частичное сохранение контакта. Оба состояния сопровождаются болью, деформацией и нарушением функции."},
+      {h:"Осмотр", p:"Оцените деформацию, положение конечности, пружинящее сопротивление, нейроваскулярный статус. Проверьте пульс, чувствительность и движения дистальнее сустава."},
+      {h:"Визуализация", p:"Рентгенография в 2 проекциях до и после вправления — обязательно. КТ/МРТ — при подозрении на перелом или повреждение мягкотканных структур."},
+      {h:"Вправление", p:"Обезболивание и/или седация. Закрытое вправление — предпочтительно. После вправления — контроль рентгена, нейроваскулярного статуса и стабильности."},
+      {h:"Иммобилизация и реабилитация", p:"Срок иммобилизации зависит от сустава и стабильности. Ранняя реабилитация — после стабилизации. Показания к операции: нестабильность, интерпозиция, повторный вывих, перелом."},
+      {h:"Показания к операции", p:"Неудачное закрытое вправление, нестабильность, повреждение сосудов/нервов, оскольчатые переломы, привычный вывих."}
+    ],
+    alert: "До вправления исключите перелом и сосудисто-нервное повреждение."
+  },
+  "Ортопедия и эндопротезирование": {
+    intro: "Ортопедия занимается дегенеративными, воспалительными и посттравматическими заболеваниями опорно-двигательного аппарата. Эндопротезирование — один из ключевых методов восстановления функции сустава.",
+    blocks: [
+      {h:"Дегенеративные заболевания", p:"Остеоартроз, коксартроз, гонартроз. Проявляются болью, ограничением движений, деформацией. Диагностика: рентген, МРТ, оценка функции."},
+      {h:"Показания к эндопротезированию", p:"Выраженная боль, снижение качества жизни, ограничение функции, неэффективность консервативного лечения. Противопоказания: активная инфекция, тяжелая соматическая патология, некомпенсированные состояния."},
+      {h:"Предоперационная оценка", p:"Оценка соматического статуса, инфекций, тромботических рисков, анестезиологических рисков. Планирование импланта и хирургического доступа."},
+      {h:"Виды имплантов", p:"Тотальные и частичные, цементные и бесцементные, с разными типами пар трения. Выбор — по возрасту, активности, качеству кости."},
+      {h:"Реабилитация", p:"Ранняя активизация, ЛФК, контроль боли, профилактика тромбозов и инфекций. Обучение пациента и контроль нагрузки."},
+      {h:"Профилактика осложнений", p:"Антибиотикопрофилактика, антикоагулянты, асептика, раннее выявление инфекции и нестабильности импланта."}
+    ],
+    key: "Выбор тактики — с учетом функции, боли, возраста и рисков."
+  },
+  "Повреждения позвоночника": {
+    intro: "Повреждения позвоночника опасны нестабильностью и повреждением спинного мозга. Требуют осторожной иммобилизации и своевременной визуализации.",
+    blocks: [
+      {h:"Механизм травмы", p:"Сгибание, разгибание, осевая нагрузка, ротация. Высокоэнергетическая травма — частая причина нестабильных повреждений."},
+      {h:"Стабилизация", p:"Иммобилизация шейного отдела, фиксация на щите, избегание осевых нагрузок. При подозрении на повреждение — не перемещать без необходимости."},
+      {h:"Неврологический осмотр", p:"Оценка уровня сознания, двигательной и чувствительной функции, рефлексов, тонуса сфинктеров. Шкала ASIA — для оценки тяжести повреждения спинного мозга."},
+      {h:"Визуализация", p:"КТ — метод выбора при травме. МРТ — при подозрении на повреждение спинного мозга, связок, дисков, гематом."},
+      {h:"Оценка нестабильности", p:"Шкалы TLICS (тораколюмбальный отдел) и SLICS (шейный отдел) помогают выбрать консервативное или хирургическое лечение."},
+      {h:"Лечение", p:"Консервативное — корсеты, иммобилизация. Хирургическое — декомпрессия, стабилизация, фиксация. При повреждении спинного мозга — срочная консультация нейрохирурга."}
+    ],
+    alert: "Любое подозрение на повреждение позвоночника — иммобилизация до исключения нестабильности."
+  },
+  "Спортивная травматология": {
+    intro: "Спортивные травмы включают острые повреждения и перегрузочные синдромы. Главная задача — безопасное возвращение к спорту без риска повторной травмы.",
+    blocks: [
+      {h:"Острые повреждения", p:"Растяжения, надрывы и разрывы связок, повреждения менисков, мышц и сухожилий. Диагностика: осмотр, УЗИ, МРТ."},
+      {h:"Перегрузочные синдромы", p:"Тендиниты, бурситы, стресс-переломы, эпикондилиты. Связаны с повторяющейся нагрузкой и ошибками тренировок."},
+      {h:"Диагностика", p:"Функциональные тесты, УЗИ, МРТ, рентген. Важно оценить не только структуру, но и функцию."},
+      {h:"Лечение", p:"Консервативное: покой, ЛФК, физиотерапия, постепенная нагрузка. Оперативное — при нестабильности, разрывах, неэффективности консервативного лечения."},
+      {h:"Возвращение к спорту", p:"Критерии: отсутствие боли, полный объем движений, сила, стабильность, функциональные тесты. Срок — не единственный критерий."},
+      {h:"Профилактика", p:"Разминка, техника, режим нагрузки, восстановление, укрепление мышц-стабилизаторов."}
+    ],
+    key: "Функциональные критерии важнее одного только срока после травмы."
+  },
+  "Детская ортопедия": {
+    intro: "Детская ортопедия учитывает рост скелета, зоны роста и высокий потенциал ремоделирования. Тактика отличается от взрослой.",
+    blocks: [
+      {h:"Особенности растущего скелета", p:"Наличие зон роста, эластичность костей, высокий потенциал ремоделирования. Повреждения зон роста могут привести к деформациям."},
+      {h:"Врожденные деформации", p:"Дисплазия тазобедренных суставов, косолапость, кривошея. Ранняя диагностика и лечение улучшают прогноз."},
+      {h:"Детские переломы", p:"Часто встречаются переломы по типу «зеленой ветки» и поднадкостничные. Классификация Salter-Harris — для повреждений зон роста."},
+      {h:"Дисплазия тазобедренных суставов", p:"Скрининг, УЗИ в раннем возрасте, ортезирование, при необходимости — оперативное лечение."},
+      {h:"Возрастные нормы", p:"Оценка развития по возрасту: ходьба, ось конечностей, объем движений. Отклонения требуют наблюдения."},
+      {h:"Принципы лечения", p:"Минимально инвазивные методы, учет роста, динамическое наблюдение. Тактика зависит от возраста, локализации и потенциала ремоделирования."}
+    ],
+    key: "Тактика зависит от возраста, локализации, роста и потенциала ремоделирования."
+  }
+};
+
+let currentTopic = "";
+
+function openTheory(name){
+  const t = THEORY[name];
+  if(!t){ toast('Материал по теме пока недоступен'); return; }
+  currentTopic = name;
+  const title = document.getElementById('theoryTitle');
+  const body = document.getElementById('theoryBody');
+  title.textContent = name;
+  let html = '<p class="muted">'+t.intro+'</p>';
+  if(t.blocks){
+    t.blocks.forEach(b=>{
+      html += '<h4>'+b.h+'</h4><p>'+b.p+'</p>';
+    });
+  }
+  if(t.key) html += '<div class="key"><b>Ключевое:</b> '+t.key+'</div>';
+  if(t.alert) html += '<div class="alert"><b>Внимание:</b> '+t.alert+'</div>';
+  html += '<p class="muted" style="margin-top:16px"><small>Материал носит учебный характер. Проверяйте по клиническим рекомендациям и учебникам.</small></p>';
+  body.innerHTML = html;
+  document.getElementById('theoryModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTheory(){
+  document.getElementById('theoryModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function askAIAboutTopic(){
+  if(!currentTopic) return;
+  closeTheory();
+  document.getElementById('aiQuestion').value = 'Объясни тему: ' + currentTopic;
+  document.getElementById('ai').scrollIntoView({behavior:'smooth'});
+  toast('Тема отправлена в ИИ-помощник');
+}
+
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape') closeTheory();
+});
+</script>
+
+<script>
+const links=[...document.querySelectorAll('.nav a')];const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);const back=document.getElementById('back');
+window.addEventListener('scroll',()=>{back.style.display=scrollY>500?'block':'none';let current=sections.find(s=>s.getBoundingClientRect().top>=0&&s.getBoundingClientRect().top<260);links.forEach(a=>a.classList.toggle('active',current&&a.getAttribute('href')==='#'+current.id))});
+function toast(t){const x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2500)}
+function askDemo(){const q=document.getElementById('aiQuestion').value.trim();const a=document.getElementById('aiAnswer');if(!q){toast('Введите вопрос');return}a.style.display='block';a.innerHTML='<b>Демонстрационный ответ:</b> запрос «'+escapeHtml(q)+'» принят. Для учебного ответа используйте проверенные клинические рекомендации и оценку преподавателя. <small>Сформировано в демо-режиме · '+new Date().toLocaleDateString('ru-RU')+'</small>'}
+function escapeHtml(s){return s.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]))}
+function filterTopics(){const q=document.getElementById('topicSearch').value.trim().toLowerCase();let n=0;document.querySelectorAll('.topic').forEach(x=>{const show=!q||x.textContent.toLowerCase().includes(q);x.style.display=show?'block':'none';if(show)n++});toast(n?'Найдено тем: '+n:'Темы не найдены')}
+function openTopic(name){document.getElementById('aiQuestion').value='Объясни тему: '+name;document.getElementById('ai').scrollIntoView({behavior:'smooth'});toast('Тема открыта в ИИ-помощнике')}
+</script>
+
+<script>
+document.querySelectorAll('.checklist li').forEach(li=>{li.tabIndex=0;li.addEventListener('click',()=>{li.classList.toggle('done');li.style.opacity=li.classList.contains('done')?.55:1})});
+</script>
+</body>
+</html>
